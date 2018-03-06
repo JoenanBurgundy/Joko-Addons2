@@ -7,7 +7,7 @@
 			<field name="inherit_id" ref="purchase.purchase_order_form" />
 			<field name="arch" type="xml">
 				<field name="currency_id" position="after">
-					<field name="rate" widget="monetary" class="oe_read_only"
+					<field name="rate" widget="monetary"
 						options="{'currency_field': 'company_id.currency_id'}" />
 				</field>
 			</field>

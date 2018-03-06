@@ -14,10 +14,17 @@ from odoo.tools import float_is_zero, float_compare, DEFAULT_SERVER_DATETIME_FOR
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
     
-    rate = fields.Float(string='Rate', states={'draft': [('readonly', False)]})
+    @api.one
+    @api.depends('currency_id')
+    def _rate(self):
+        for purchase in self:
+            if purchase.state == 'draft':
+                    purchase.rate = purchase.company_id.currency_id.rate / purchase.currency_id.rate if purchase.currency_id else 0
+    
+    rate = fields.Monetary(string='Rate', compute='_rate', store=True)
 
-    @api.multi
-    @api.onchange('currency_id')
-    def onchange_currency_id(self):
-        self.rate = self.currency_id.rate
-        return {}
+#     @api.multi
+#     @api.onchange('currency_id')
+#     def onchange_currency_id(self):
+#         self.rate = self.company_id.currency_id.rate / self.currency_id.rate
+#         return {}

@@ -7,7 +7,7 @@
 			<field name="inherit_id" ref="product.product_template_form_view" />
 			<field name="arch" type="xml">
 				<field name="type" position="before">
-					<field name="oplos_code" domain="[('id','!=',id)]" />
+					<field name="oplos_code" domain="[('product_tmpl_id','!=',id)]" />
 					<field name="oplos_desc"
 						attrs="{'invisible': [('oplos_code','=',False)], 'required': [('oplos_code','!=',False)]}" />
 					<field name="oplos_sale_price"

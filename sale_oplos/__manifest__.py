@@ -2,7 +2,7 @@
     "name": "Sale Oplos",
     "version": "10.1",
     "depends": [
-        'sale',
+        'sale_stock',
     ],
     "author": "Joenan <joenannr@gmail.com>",
     "category": "",

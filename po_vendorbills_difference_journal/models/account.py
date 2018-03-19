@@ -65,7 +65,7 @@ class AccountInvoice(models.Model):
                 'name': 'Price different',
                 'price_unit': diff,
                 'quantity': 1,
-                'price': diff,
+                'price': -diff,
                 'account_id': self.partner_id.diff_account_receivable.id if self.type in ('out_invoice', 'out_refund') \
                     else self.partner_id.diff_account_payable.id,
                 'invoice_id': self.id,

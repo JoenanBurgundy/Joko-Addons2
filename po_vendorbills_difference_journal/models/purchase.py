@@ -24,7 +24,8 @@ class StockMove(models.Model):
         res = super(StockMove, self).action_done()
         if self:
             for move in self.filtered(lambda r: r. product_id.type == 'product' and r. purchase_line_id):
-                value = sum([quant.inventory_value for quant in move.quant_ids])
+#                 value = sum([quant.inventory_value for quant in move.quant_ids])
+                value = move.purchase_line_id.price_unit * move.product_uom_qty
                 move.purchase_line_id.last_received_value += value
         return res
         

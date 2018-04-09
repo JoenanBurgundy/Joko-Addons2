@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="invoice_supplier_rate_form" model="ir.ui.view">
+		<field name="name">invoice supplier rate form</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_supplier_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/group/group[2]" position="inside">
+				<field name="foreign_currency" invisible="1" />
+				<field name="rate" groups="base.group_multi_currency"
+					options="{'currency_field': 'company_currency_id'}" attrs="{'invisible':[('foreign_currency','=',False)]}" />
+			</xpath>
+		</field>
+	</record>
+
+	<record id="invoice_rate_form" model="ir.ui.view">
+		<field name="name">invoice supplier rate form</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/group/group[2]" position="inside">
+				<field name="foreign_currency" invisible="1" />
+				<field name="rate" groups="base.group_multi_currency"
+					options="{'currency_field': 'company_currency_id'}" attrs="{'invisible':[('foreign_currency','=',False)]}" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

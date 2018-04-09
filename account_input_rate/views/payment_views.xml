@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_account_payment_form" model="ir.ui.view">
+		<field name="name">account.payment.rate.form</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/group/group[1]" position="inside">
+				<field name="foreign_currency" invisible="1" />
+				<field name="company_currency_id" invisible="1" />
+				<field name="rate" groups="base.group_multi_currency"
+					options="{'currency_field': 'company_currency_id'}"
+					attrs="{'invisible':['|',('foreign_currency','=',False),('journal_id','=',False)]}" />
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_account_payment_invoice_form" model="ir.ui.view">
+		<field name="name">account.payment.invoice.rate.form</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_invoice_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/group/group[1]" position="inside">
+				<field name="foreign_currency" invisible="1" />
+				<field name="company_currency_id" invisible="1" />
+				<field name="rate" groups="base.group_multi_currency"
+					options="{'currency_field': 'company_currency_id'}"
+					attrs="{'invisible':['|',('foreign_currency','=',False),('journal_id','=',False)]}" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

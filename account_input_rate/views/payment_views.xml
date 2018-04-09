@@ -8,7 +8,7 @@
 			<xpath expr="//form/sheet/group/group[1]" position="inside">
 				<field name="foreign_currency" invisible="1" />
 				<field name="company_currency_id" invisible="1" />
-				<field name="rate" groups="base.group_multi_currency"
+				<field name="rate_amount" groups="base.group_multi_currency"
 					options="{'currency_field': 'company_currency_id'}"
 					attrs="{'invisible':['|',('foreign_currency','=',False),('journal_id','=',False)]}" />
 			</xpath>
@@ -23,7 +23,7 @@
 			<xpath expr="//form/sheet/group/group[1]" position="inside">
 				<field name="foreign_currency" invisible="1" />
 				<field name="company_currency_id" invisible="1" />
-				<field name="rate" groups="base.group_multi_currency"
+				<field name="rate_amount" groups="base.group_multi_currency"
 					options="{'currency_field': 'company_currency_id'}"
 					attrs="{'invisible':['|',('foreign_currency','=',False),('journal_id','=',False)]}" />
 			</xpath>

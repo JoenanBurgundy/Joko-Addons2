@@ -94,6 +94,6 @@ class AccountPayment(models.Model):
     
     @api.onchange('currency_id')
     def onchange_currency_id(self):
-        self.rate_amount = self.currency_id.rate_amount if self.currency_id else 0.0
+        self.rate_amount = self.currency_id.rate if self.currency_id else 0.0
         return {}
     

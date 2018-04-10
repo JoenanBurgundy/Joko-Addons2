@@ -13,6 +13,15 @@ class AccountInvoice(models.Model):
     rate_amount = fields.Monetary(string='Rate', readonly=True, states={'draft': [('readonly', False)]})
     foreign_currency = fields.Boolean(string='Foreign Currency', compute='_check_foreign_currency')
     
+    @api.onchange('purchase_id')
+    def purchase_order_change(self):
+        self.currency_id = self.purchase_id.currency_id
+        return super(AccountInvoice, self).purchase_order_change()
+        
+    @api.onchange('journal_id')
+    def _onchange_journal_id(self):
+        return {}
+            
     @api.multi
     def compute_invoice_totals(self, company_currency, invoice_move_lines):
         if self.foreign_currency and self.rate_amount:

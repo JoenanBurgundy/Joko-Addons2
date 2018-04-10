@@ -9,7 +9,10 @@
     'description': """
     """,
     'author': 'Joenan <joenannr@gmail.com>',
-    'depends': ['account_accountant'],
+    'depends': [
+        'account_accountant', 
+        'purchase',
+    ],
     'data': [
         'views/invoice_views.xml',
         'views/payment_views.xml',
